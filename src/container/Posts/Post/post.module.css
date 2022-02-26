@@ -1,0 +1,56 @@
+.border {
+  border: 2px solid aqua;
+  border-radius: 5px;
+  background-color: aquamarine;
+  margin: 1.5%;
+}
+
+.border:hover {
+  box-shadow: 2px 2px 2px 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 35% auto;
+}
+
+.subGrid {
+  display: grid;
+  grid-template-columns: 13% auto 45%;
+}
+
+.vLine {
+  width: 1px;
+  height: 100%;
+  background-color: rgb(154, 154, 154);
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 1%;
+}
+
+.vote {
+  margin-top: 1%;
+}
+
+.display {
+  display: inline-block;
+  padding: 0.5%;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: violet;
+}
+
+.change {
+  color: violet;
+}

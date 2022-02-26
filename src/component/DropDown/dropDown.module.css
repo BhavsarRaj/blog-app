@@ -1,0 +1,35 @@
+.dropDown {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  margin-left: 40%;
+}
+
+.dropDownContent {
+  display: none;
+  position: absolute;
+  padding: 10%;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7);
+  background-color: black;
+  color: gray;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+.dropDown:hover .dropDownContent {
+  display: block;
+}
+
+.text {
+  color: gray;
+  text-decoration: none;
+}
+
+.text:hover {
+  color: white;
+}
+
+.dropDown:hover {
+  color: white;
+}

@@ -1,0 +1,32 @@
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: black;
+  color: gray;
+  font-size: 22px;
+  padding: 1%;
+  position: sticky;
+  top: 0px;
+}
+
+.subGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.link {
+  text-align: right;
+  color: gray;
+  text-decoration: none;
+}
+
+.link:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.activeLink {
+  text-align: right;
+  color: white;
+  text-decoration: none;
+}

@@ -1,0 +1,66 @@
+.card {
+  background-color: black;
+  width: 60%;
+  height: 50%;
+  margin: 7% 20% 25% 20%;
+  color: white;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 1%;
+}
+
+.inputUpper {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+  height: 25px;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.inputMiddle {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 5%;
+  height: 25px;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.inputLower {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  height: 25px;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.inactive {
+  color: gray;
+}
+
+.button {
+  margin-left: 43%;
+  padding: 1%;
+  border-radius: 5px;
+  font-size: 18px;
+  background-color: white;
+  color: orange;
+  cursor: pointer;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.button:hover {
+  background-color: orange;
+  color: white;
+}
