@@ -16,7 +16,13 @@ const store = createStore(
     upVotedPostsId: null,
     downVotedPostsId: null,
     postsUpDownVoteData: {},
-    users: [],
+    users: [
+      // {
+      //   fullName: "Raj Bhavsar",
+      //   email: "bha@sarkar.in",
+      //   password: "$2a$10$FFm3p922GFPADLloJyfBVe.CXBURsNVnsQvDKoVqzqOTxjMoqGfti"
+      // }
+    ],
     posts: [
       // {
       //   id: "1",

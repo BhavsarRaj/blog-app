@@ -1,0 +1,66 @@
+.header {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.card {
+  margin-top: 10%;
+  border-radius: 5px;
+  border: 4px solid orange;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.text {
+  padding: 1%;
+  font-size: 17px;
+}
+
+.button {
+  padding: 1%;
+  margin-left: 37%;
+  margin-top: 5%;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: white;
+  color: orange;
+  cursor: pointer;
+  border-color: orange;
+}
+
+.button:hover {
+  background-color: orange;
+  color: white;
+}
+
+.inputUpper {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+  height: 25px;
+  padding: 1%;
+  border-radius: 5px;
+  border-color: orange;
+}
+
+.inputMiddle {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 5%;
+  height: 25px;
+  padding: 1%;
+  border-radius: 5px;
+  border-color: orange;
+}
+
+.inputLower {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  height: 25px;
+  padding: 1%;
+  border-radius: 5px;
+  border-color: orange;
+}

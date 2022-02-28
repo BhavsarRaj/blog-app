@@ -41,4 +41,16 @@ const onNewPost = (value) => {
   };
 };
 
-export { onUpVote, onDownVote, onLogIn, onRegister, onLogOut, onNewPost };
+const onPasswordChange = (password) => {
+  return { type: actionTypes.ChangePassword, newPassword: password };
+};
+
+export {
+  onUpVote,
+  onDownVote,
+  onLogIn,
+  onRegister,
+  onLogOut,
+  onNewPost,
+  onPasswordChange
+};

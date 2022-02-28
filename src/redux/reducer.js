@@ -233,6 +233,16 @@ const reducer = (oldState, action) => {
       };
     }
 
+    case actionTypes.ChangePassword: {
+      const newPassword = action.newPassword;
+      const newLogInUserObject = oldState.logInUserObject;
+      newLogInUserObject.password = newPassword;
+      return {
+        ...oldState,
+        logInUserObject: newLogInUserObject
+      };
+    }
+
     default:
       return oldState;
   }
