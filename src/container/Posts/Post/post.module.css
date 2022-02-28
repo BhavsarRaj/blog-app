@@ -17,6 +17,8 @@
 .subGrid {
   display: grid;
   grid-template-columns: 13% auto 45%;
+  text-decoration: none;
+  color: black;
 }
 
 .vLine {

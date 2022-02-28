@@ -1,5 +1,6 @@
 import React from "react";
 import { BiUserCircle, BiUpvote, BiDownvote } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import classes from "./post.module.css";
 
@@ -42,11 +43,11 @@ const Post = (props) => {
   return (
     <div className={classes.border}>
       <div className={classes.grid}>
-        <div className={classes.subGrid}>
+        <Link to={"/profile/" + props.email} className={classes.subGrid}>
           <BiUserCircle size="23px" />
           <p style={{ textAlign: "left" }}>{props.userName}</p>
           <div className={classes.vLine}></div>
-        </div>
+        </Link>
         <p className={classes.title}>{props.title}</p>
       </div>
       <hr></hr>
