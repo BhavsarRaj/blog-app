@@ -26,6 +26,7 @@ const MyPost = () => {
         votes={obj.vote}
         upVoteClick={() => dispatch(onUpVote(obj.id))}
         downVoteClick={() => dispatch(onDownVote(obj.id))}
+        comments={obj.comments}
       />
     );
   });

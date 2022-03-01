@@ -41,7 +41,6 @@
 }
 
 .display {
-  display: inline-block;
   padding: 0.5%;
 }
 
@@ -55,4 +54,53 @@
 
 .change {
   color: violet;
+}
+
+.comment {
+  margin-top: 0.5%;
+  cursor: pointer;
+}
+
+.comment:hover {
+  color: violet;
+}
+
+.commentGrid {
+  display: grid;
+  grid-template-columns: 16% auto;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 1%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.commentSubGrid {
+  display: grid;
+  grid-template-columns: 20% auto 6%;
+}
+
+.commentInputGrid {
+  display: grid;
+  grid-template-columns: 50% 15%;
+  margin-bottom: 1%;
+}
+
+.button {
+  margin-left: 10%;
+  border-radius: 5px;
+  font-size: 19px;
+  background-color: white;
+  color: orange;
+  cursor: pointer;
+  border-color: orange;
+}
+
+.button:hover {
+  background-color: orange;
+  color: white;
+}
+
+.textarea {
+  padding: 1%;
 }

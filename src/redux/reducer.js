@@ -225,7 +225,8 @@ const reducer = (oldState, action) => {
         user: oldState.logInUserObject,
         title: action.value.title,
         content: action.value.content,
-        vote: 0
+        vote: 0,
+        comments: []
       });
       return {
         ...oldState,
@@ -240,6 +241,33 @@ const reducer = (oldState, action) => {
       return {
         ...oldState,
         logInUserObject: newLogInUserObject
+      };
+    }
+
+    case actionTypes.AddComment: {
+      const content = action.value;
+      let index = -1;
+      const post = oldState.posts.filter((obj, ind) => {
+        if (obj.id === action.id) {
+          index = ind;
+          return true;
+        } else {
+          return false;
+        }
+      });
+      const newComments = [...post[0].comments];
+      const id = new Date();
+      newComments.push({
+        user: oldState.logInUserObject,
+        content: content,
+        id: id
+      });
+      post[0].comments = newComments;
+      const newPosts = [...oldState.posts];
+      newPosts[index] = post[0];
+      return {
+        ...oldState,
+        posts: newPosts
       };
     }
 

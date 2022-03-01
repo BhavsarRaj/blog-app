@@ -18,7 +18,7 @@ const App = (props) => {
       <Route path="/login" exact component={LoginReg} />
       <Route path="/my-post" exact component={MyPost} />
       <Route path="/new-post" exact component={NewPost} />
-      <Route path="/profile/:email" component={Profile} />
+      <Route path="/profile/:email" exact component={Profile} />
     </div>
   );
 };

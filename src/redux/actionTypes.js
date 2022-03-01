@@ -5,5 +5,15 @@ const Register = "Register";
 const LogOut = "LogOut";
 const NewPost = "NewPost";
 const ChangePassword = "ChangePassword";
+const AddComment = "AddComment";
 
-export { UpVote, DownVote, LogIn, Register, LogOut, NewPost, ChangePassword };
+export {
+  UpVote,
+  DownVote,
+  LogIn,
+  Register,
+  LogOut,
+  NewPost,
+  ChangePassword,
+  AddComment
+};

@@ -45,6 +45,14 @@ const onPasswordChange = (password) => {
   return { type: actionTypes.ChangePassword, newPassword: password };
 };
 
+const onAddComment = (value, id) => {
+  return {
+    type: actionTypes.AddComment,
+    value: value,
+    id: id
+  };
+};
+
 export {
   onUpVote,
   onDownVote,
@@ -52,5 +60,6 @@ export {
   onRegister,
   onLogOut,
   onNewPost,
-  onPasswordChange
+  onPasswordChange,
+  onAddComment
 };

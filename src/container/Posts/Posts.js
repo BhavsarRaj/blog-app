@@ -16,6 +16,7 @@ const Posts = (props) => {
         votes={obj.vote}
         upVoteClick={() => props.onUpVoteHandler(obj.id)}
         downVoteClick={() => props.onDownVoteHandler(obj.id)}
+        comments={obj.comments}
       />
     );
   });
