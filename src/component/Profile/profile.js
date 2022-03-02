@@ -7,6 +7,10 @@ import classes from "./profile.module.css";
 const Profile = (props) => {
   const users = useSelector((state) => state.users);
   const logInUser = useSelector((state) => state.logInUserObject);
+  const upVotedPostsId = useSelector((state) => state.upVotedPostsId);
+  const downVotedPostsId = useSelector((state) => state.downVotedPostsId);
+  const upVotedNumbers = upVotedPostsId.size;
+  const downVotedNumbers = downVotedPostsId.size;
   const dispatch = useDispatch();
 
   const [state, setState] = useState({
@@ -122,6 +126,8 @@ const Profile = (props) => {
       <div className={classes.card}>
         <p className={classes.text}>FullName: {user[0].fullName}</p>
         <p className={classes.text}>Email: {user[0].email}</p>
+        <p className={classes.text}>Total UpVotes: {upVotedNumbers}</p>
+        <p className={classes.text}>Total DownVotes: {downVotedNumbers}</p>
         {state.isChangeClicked ? (
           form
         ) : (

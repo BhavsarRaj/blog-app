@@ -21,6 +21,7 @@ const MyPost = () => {
         key={obj.id}
         id={obj.id}
         userName={obj.user.fullName}
+        email={obj.user.email}
         title={obj.title}
         content={obj.content}
         votes={obj.vote}
