@@ -78,6 +78,8 @@
 .commentSubGrid {
   display: grid;
   grid-template-columns: 20% auto 6%;
+  text-decoration: none;
+  color: black;
 }
 
 .commentInputGrid {

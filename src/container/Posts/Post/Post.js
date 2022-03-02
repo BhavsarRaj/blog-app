@@ -79,11 +79,14 @@ const Post = (props) => {
   const commentData = props.comments.map((obj) => {
     return (
       <div className={classes.commentGrid} key={obj.id}>
-        <div className={classes.commentSubGrid}>
+        <Link
+          to={"/profile/" + obj.user.email}
+          className={classes.commentSubGrid}
+        >
           <BiUserCircle size="23px" />
           <p>{obj.user.fullName}</p>
           <div className={classes.vLine}></div>
-        </div>
+        </Link>
         <pre>{obj.content}</pre>
       </div>
     );
