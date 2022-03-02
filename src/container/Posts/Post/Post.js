@@ -142,7 +142,9 @@ const Post = (props) => {
           <p style={{ textAlign: "left" }}>{props.userName}</p>
           <div className={classes.vLine}></div>
         </Link>
-        <p className={classes.title}>{props.title}</p>
+        <Link to={"/" + props.id} className={classes.title}>
+          {props.title}
+        </Link>
       </div>
       <hr></hr>
       <div className={classes.content}>

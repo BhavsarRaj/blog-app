@@ -11,12 +11,12 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 35% auto;
+  grid-template-columns: 22% auto;
 }
 
 .subGrid {
   display: grid;
-  grid-template-columns: 13% auto 45%;
+  grid-template-columns: 20% auto 15%;
   text-decoration: none;
   color: black;
 }
@@ -30,6 +30,9 @@
 .title {
   font-size: 25px;
   font-weight: bold;
+  text-decoration: none;
+  color: black;
+  margin-left: 25%;
 }
 
 .content {
