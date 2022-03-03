@@ -16,7 +16,17 @@ const Post = (props) => {
   const downVotedPostsId = useSelector((state) => state.downVotedPostsId);
   const dispatch = useDispatch();
 
-  const [state, setState] = useState({ isCommentClicked: false, comment: "" });
+  const pathName = window.location.pathname;
+  const temp = pathName.split("/");
+  let initialComment = false;
+  if (temp[1] !== "" && temp[1] !== "my-post") {
+    initialComment = true;
+  }
+
+  const [state, setState] = useState({
+    isCommentClicked: initialComment,
+    comment: ""
+  });
 
   // console.log(upVotedPostsId);
   // console.log(downVotedPostsId);
