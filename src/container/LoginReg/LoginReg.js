@@ -8,12 +8,22 @@ const LoginReg = (props) => {
   const [state, setState] = useState({
     presentOnLogin: true,
     logInDetail: { email: "", password: "" },
-    registerDetail: { fullName: "", email: "", password: "", repassword: "" }
+    registerDetail: { fullName: "", email: "", password: "", repassword: "" },
+    registerClicked: false
   });
   // console.log(props.emails);
   // for (let item of props.emails) {
   //   console.log(item);
   // }
+
+  if (props.isAuthenticated) {
+    props.history.replace("/");
+  }
+
+  let spinner = null;
+  if (state.registerClicked) {
+    spinner = <div className={classes.spinner}></div>;
+  }
 
   const onChangeHandler = () => {
     setState((oldState) => {
@@ -136,7 +146,12 @@ const LoginReg = (props) => {
       password: bcrpytjs.hashSync(password)
     });
 
-    props.history.replace("/");
+    setState((oldState) => {
+      return {
+        ...oldState,
+        registerClicked: true
+      };
+    });
   };
 
   let content = null;
@@ -199,7 +214,11 @@ const LoginReg = (props) => {
           required
         />
         <br />
-        <input type="submit" value="Register" className={classes.button} />
+        {state.registerClicked ? (
+          spinner
+        ) : (
+          <input type="submit" value="Register" className={classes.button} />
+        )}
       </form>
     );
   }
@@ -246,7 +265,8 @@ const LoginReg = (props) => {
 const mapStateToProps = (state) => {
   return {
     emails: state.emails,
-    users: state.users
+    users: state.users,
+    isAuthenticated: state.isAuthenticated
   };
 };
 

@@ -64,3 +64,25 @@
   background-color: orange;
   color: white;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.spinner::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border: 6px solid white;
+  border-top-color: orange;
+  border-radius: 50%;
+  animation: spinner 1s ease infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(1turn);
+  }
+}

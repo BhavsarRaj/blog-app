@@ -9,9 +9,16 @@ const Profile = (props) => {
   const logInUser = useSelector((state) => state.logInUserObject);
   const upVotedPostsId = useSelector((state) => state.upVotedPostsId);
   const downVotedPostsId = useSelector((state) => state.downVotedPostsId);
-  const upVotedNumbers = upVotedPostsId.size;
-  const downVotedNumbers = downVotedPostsId.size;
   const dispatch = useDispatch();
+
+  let upVotedNumbers = 0;
+  let downVotedNumbers = 0;
+  if (upVotedPostsId) {
+    upVotedNumbers = upVotedPostsId.size;
+  }
+  if (downVotedPostsId) {
+    downVotedNumbers = downVotedPostsId.size;
+  }
 
   const [state, setState] = useState({
     isChangeClicked: false,

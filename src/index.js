@@ -1,8 +1,9 @@
 import React from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
+import middleware from "./redux/middleware.js";
 import { BrowserRouter } from "react-router-dom";
 import reducer from "./redux/reducer.js";
 import App from "./container/App/App";
@@ -48,7 +49,7 @@ const store = createStore(
       // }
     ]
   },
-  devToolsEnhancer()
+  compose(applyMiddleware(middleware), devToolsEnhancer())
 );
 
 const rootElement = document.getElementById("root");
