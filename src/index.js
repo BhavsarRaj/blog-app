@@ -3,16 +3,21 @@ import { createStore, applyMiddleware, compose } from "redux";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
-import middleware from "./redux/middleware.js";
+// import middleware from "./redux/middleware.js";
+import rootSaga from "./redux/rootSaga.js";
+import createSagaMiddleware from "redux-saga";
 import { BrowserRouter } from "react-router-dom";
 import reducer from "./redux/reducer.js";
 import App from "./container/App/App";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   reducer,
   {
     emails: new Set(),
     isAuthenticated: false,
+    isRegisteredFailed: false,
     logInUserObject: null,
     upVotedPostsId: null,
     downVotedPostsId: null,
@@ -49,8 +54,10 @@ const store = createStore(
       // }
     ]
   },
-  compose(applyMiddleware(middleware), devToolsEnhancer())
+  compose(applyMiddleware(sagaMiddleware), devToolsEnhancer())
 );
+
+sagaMiddleware.run(rootSaga);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

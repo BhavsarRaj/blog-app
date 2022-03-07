@@ -168,7 +168,7 @@ const reducer = (oldState, action) => {
       };
     }
 
-    case actionTypes.Register: {
+    case actionTypes.Register_Success: {
       const newUsers = [...oldState.users];
       newUsers.push(action.user);
       const newEmails = new Set();
@@ -192,7 +192,15 @@ const reducer = (oldState, action) => {
           [newEmail]: value
         },
         upVotedPostsId: value.upVotedPostsId,
-        downVotedPostsId: value.downVotedPostsId
+        downVotedPostsId: value.downVotedPostsId,
+        isRegisteredFailed: false
+      };
+    }
+
+    case actionTypes.Register_Failed: {
+      return {
+        ...oldState,
+        isRegisteredFailed: true
       };
     }
 

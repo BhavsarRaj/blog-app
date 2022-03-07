@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { onRegister, onLogIn } from "../../redux/actionCreators.js";
 import bcrpytjs from "bcryptjs";
 import classes from "./loginReg.module.css";
@@ -16,8 +17,22 @@ const LoginReg = (props) => {
   //   console.log(item);
   // }
 
-  if (props.isAuthenticated) {
-    props.history.replace("/");
+  // if (props.isAuthenticated) {
+  //   props.history.replace("/");
+  // }
+
+  // useEffect(() => {
+  //   props.history.replace("/");
+  // }, [props.isAuthenticated]);
+
+  if (props.isRegisteredFailed && state.registerClicked) {
+    alert("Registeration Failed! Please try again.");
+    setState((oldState) => {
+      return {
+        ...oldState,
+        registerClicked: false
+      };
+    });
   }
 
   let spinner = null;
@@ -239,25 +254,31 @@ const LoginReg = (props) => {
   }
 
   return (
-    <div className={classes.card}>
-      <div className={classes.container}>
-        <p
-          style={{ cursor: "pointer" }}
-          className={classLogin.join(" ")}
-          onClick={onChangeHandler}
-        >
-          Login
-        </p>
-        <p
-          style={{ cursor: "pointer" }}
-          className={classRegister.join(" ")}
-          onClick={onChangeHandler}
-        >
-          Register
-        </p>
-      </div>
-      <hr style={{ borderColor: "gray" }} />
-      {content}
+    <div>
+      {props.isAuthenticated ? (
+        <Redirect to="/" />
+      ) : (
+        <div className={classes.card}>
+          <div className={classes.container}>
+            <p
+              style={{ cursor: "pointer" }}
+              className={classLogin.join(" ")}
+              onClick={onChangeHandler}
+            >
+              Login
+            </p>
+            <p
+              style={{ cursor: "pointer" }}
+              className={classRegister.join(" ")}
+              onClick={onChangeHandler}
+            >
+              Register
+            </p>
+          </div>
+          <hr style={{ borderColor: "gray" }} />
+          {content}
+        </div>
+      )}
     </div>
   );
 };
@@ -266,7 +287,8 @@ const mapStateToProps = (state) => {
   return {
     emails: state.emails,
     users: state.users,
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.isAuthenticated,
+    isRegisteredFailed: state.isRegisteredFailed
   };
 };
 
