@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { onRegister, onLogIn } from "../../redux/actionCreators.js";
+import {
+  onRegister,
+  onLogIn,
+  onRegisterStatusReset,
+  onLogInStatusReset
+} from "../../redux/actionCreators.js";
 import bcrpytjs from "bcryptjs";
 import classes from "./loginReg.module.css";
 
@@ -10,33 +15,42 @@ const LoginReg = (props) => {
     presentOnLogin: true,
     logInDetail: { email: "", password: "" },
     registerDetail: { fullName: "", email: "", password: "", repassword: "" },
-    registerClicked: false
+    registerClicked: false,
+    loginClicked: false
   });
   // console.log(props.emails);
   // for (let item of props.emails) {
   //   console.log(item);
   // }
 
-  // if (props.isAuthenticated) {
-  //   props.history.replace("/");
-  // }
+  useEffect(() => {
+    if (props.isRegisteredFailed && state.registerClicked) {
+      alert("Registeration Failed! Please try again.");
+      props.onRegisterReset();
+      setState((oldState) => {
+        return {
+          ...oldState,
+          registerClicked: false
+        };
+      });
+    }
+  }, [state.registerClicked, props]);
 
-  // useEffect(() => {
-  //   props.history.replace("/");
-  // }, [props.isAuthenticated]);
-
-  if (props.isRegisteredFailed && state.registerClicked) {
-    alert("Registeration Failed! Please try again.");
-    setState((oldState) => {
-      return {
-        ...oldState,
-        registerClicked: false
-      };
-    });
-  }
+  useEffect(() => {
+    if (props.isLogInFailed && state.loginClicked) {
+      alert("LogIn Failed! Please try again.");
+      props.onLogInReset();
+      setState((oldState) => {
+        return {
+          ...oldState,
+          loginClicked: false
+        };
+      });
+    }
+  }, [state.loginClicked, props]);
 
   let spinner = null;
-  if (state.registerClicked) {
+  if (state.registerClicked || state.loginClicked) {
     spinner = <div className={classes.spinner}></div>;
   }
 
@@ -131,7 +145,12 @@ const LoginReg = (props) => {
       });
       if (bcrpytjs.compareSync(password, user[0].password)) {
         props.onLoginSubmit(user[0]);
-        props.history.replace("/");
+        setState((oldState) => {
+          return {
+            ...oldState,
+            loginClicked: true
+          };
+        });
       } else {
         alert("Invalid Email or Password");
       }
@@ -190,7 +209,11 @@ const LoginReg = (props) => {
           required
         />
         <br />
-        <input type="submit" value="LogIn" className={classes.button} />
+        {state.loginClicked ? (
+          spinner
+        ) : (
+          <input type="submit" value="LogIn" className={classes.button} />
+        )}
       </form>
     );
   } else {
@@ -288,14 +311,17 @@ const mapStateToProps = (state) => {
     emails: state.emails,
     users: state.users,
     isAuthenticated: state.isAuthenticated,
-    isRegisteredFailed: state.isRegisteredFailed
+    isRegisteredFailed: state.isRegisteredFailed,
+    isLogInFailed: state.isLogInFailed
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onRegisterSubmit: (user) => dispatch(onRegister(user)),
-    onLoginSubmit: (user) => dispatch(onLogIn(user))
+    onLoginSubmit: (user) => dispatch(onLogIn(user)),
+    onRegisterReset: () => dispatch(onRegisterStatusReset()),
+    onLogInReset: () => dispatch(onLogInStatusReset())
   };
 };
 

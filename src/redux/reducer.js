@@ -197,6 +197,13 @@ const reducer = (oldState, action) => {
       };
     }
 
+    case actionTypes.Register_Status_Reset: {
+      return {
+        ...oldState,
+        isRegisteredFailed: false
+      };
+    }
+
     case actionTypes.Register_Failed: {
       return {
         ...oldState,
@@ -204,7 +211,7 @@ const reducer = (oldState, action) => {
       };
     }
 
-    case actionTypes.LogIn: {
+    case actionTypes.LogIn_Success: {
       return {
         ...oldState,
         isAuthenticated: true,
@@ -212,7 +219,22 @@ const reducer = (oldState, action) => {
         upVotedPostsId:
           oldState.postsUpDownVoteData[action.user.email].upVotedPostsId,
         downVotedPostsId:
-          oldState.postsUpDownVoteData[action.user.email].downVotedPostsId
+          oldState.postsUpDownVoteData[action.user.email].downVotedPostsId,
+        isLogInFailed: false
+      };
+    }
+
+    case actionTypes.LogIn_Failed: {
+      return {
+        ...oldState,
+        isLogInFailed: true
+      };
+    }
+
+    case actionTypes.LogIn_Status_Reset: {
+      return {
+        ...oldState,
+        isLogInFailed: false
       };
     }
 

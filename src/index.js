@@ -4,13 +4,14 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 // import middleware from "./redux/middleware.js";
-import rootSaga from "./redux/rootSaga.js";
-import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
+// import rootSaga from "./redux/rootSaga.js";
+// import createSagaMiddleware from "redux-saga";
 import { BrowserRouter } from "react-router-dom";
 import reducer from "./redux/reducer.js";
 import App from "./container/App/App";
 
-const sagaMiddleware = createSagaMiddleware();
+// const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   reducer,
@@ -18,6 +19,7 @@ const store = createStore(
     emails: new Set(),
     isAuthenticated: false,
     isRegisteredFailed: false,
+    isLogInFailed: false,
     logInUserObject: null,
     upVotedPostsId: null,
     downVotedPostsId: null,
@@ -54,10 +56,10 @@ const store = createStore(
       // }
     ]
   },
-  compose(applyMiddleware(sagaMiddleware), devToolsEnhancer())
+  compose(applyMiddleware(thunk), devToolsEnhancer())
 );
 
-sagaMiddleware.run(rootSaga);
+// sagaMiddleware.run(rootSaga);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

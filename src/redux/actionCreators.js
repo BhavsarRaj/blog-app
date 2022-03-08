@@ -15,16 +15,44 @@ const onDownVote = (id) => {
 };
 
 const onLogIn = (user) => {
+  return async (dispatch, getState) => {
+    const url = "https://jsonplaceholder.typicode.com/posts/";
+    const email = "5";
+    const response = await fetch(url + email, { method: "GET" });
+    if (response.ok) {
+      const responseJson = await response.json();
+      console.log(responseJson);
+      dispatch({ type: actionTypes.LogIn_Success, user: user });
+    } else {
+      dispatch({ type: actionTypes.LogIn_Failed });
+    }
+  };
+};
+
+const onLogInStatusReset = () => {
   return {
-    type: actionTypes.LogIn,
-    user: user
+    type: actionTypes.LogIn_Status_Reset
   };
 };
 
 const onRegister = (user) => {
+  return async (dispatch, getState) => {
+    const url = "https://jsonplaceholder.typicode.com/posts";
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(user)
+    });
+    if (response.ok) {
+      dispatch({ type: actionTypes.Register_Success, user: user });
+    } else {
+      dispatch({ type: actionTypes.Register_Failed });
+    }
+  };
+};
+
+const onRegisterStatusReset = () => {
   return {
-    type: actionTypes.Register,
-    user: user
+    type: actionTypes.Register_Status_Reset
   };
 };
 
@@ -61,5 +89,7 @@ export {
   onLogOut,
   onNewPost,
   onPasswordChange,
-  onAddComment
+  onAddComment,
+  onRegisterStatusReset,
+  onLogInStatusReset
 };
