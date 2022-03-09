@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Post from "../../container/Posts/Post/Post.js";
+import withAuth from "../../hoc/withAuth.js";
 import { onUpVote, onDownVote } from "../../redux/actionCreators.js";
 
 const MyPost = () => {
@@ -35,4 +36,4 @@ const MyPost = () => {
   return <div>{myPostsDisplay}</div>;
 };
 
-export default MyPost;
+export default withAuth(MyPost);
